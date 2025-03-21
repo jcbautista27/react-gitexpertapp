@@ -1,17 +1,20 @@
 import { useState } from "react";
-import { AddCategory } from "./components/AddCategory";
-import { GifGrid } from "./components/GifGrid";
+import { AddCategory, GifGrid } from "./components";
 
 export const GifExpertApp = () => {
-  const [categories, setCategories] = useState([
-    "Demon slayer",
-  ]);
+  const [categories, setCategories] = useState(["Demon slayer"]);
 
   const onAddCategory = (newCategory) => {
     if (categories.includes(newCategory)) return;
 
     // console.log(newCategory);
     setCategories([newCategory, ...categories]);
+  };
+
+  const onRemoveCategory = (categoryToRemove) => {
+    setCategories(
+      categories.filter((category) => category !== categoryToRemove)
+    );
   };
 
   return (
@@ -21,7 +24,10 @@ export const GifExpertApp = () => {
       <AddCategory onNewCategory={(value) => onAddCategory(value)} />
 
       {categories.map((category) => (
-        <GifGrid key={category} category={category} />
+        <div key={category} className="wrapper">
+          <button className="buttoncss" onClick={() => onRemoveCategory(category)}>Eliminar</button>
+          <GifGrid category={category} />
+        </div>
       ))}
     </>
   );
