@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AddCategory, GifGrid } from "./components";
 
 export const GifExpertApp = () => {
-  const [categories, setCategories] = useState(["Demon slayer"]);
+  const [categories, setCategories] = useState([]);
 
   const onAddCategory = (newCategory) => {
     if (categories.includes(newCategory)) return;
@@ -25,7 +25,12 @@ export const GifExpertApp = () => {
 
       {categories.map((category) => (
         <div key={category} className="wrapper">
-          <button className="buttoncss" onClick={() => onRemoveCategory(category)}>Eliminar</button>
+          <button
+            className="buttoncss"
+            onClick={() => onRemoveCategory(category)}
+          >
+            Eliminar
+          </button>
           <GifGrid category={category} />
         </div>
       ))}

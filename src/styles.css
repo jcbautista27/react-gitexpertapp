@@ -67,10 +67,9 @@ h3 {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  
 }
 
-.buttoncss{
+.buttoncss {
   width: 100px;
   height: 40px;
   background-color: #e63946; /* Un rojo llamativo para indicar "eliminar" */
